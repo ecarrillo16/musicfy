@@ -1,11 +1,11 @@
 'use strict'
 
-var mogoose = require('mongoose');
-var Schema = mogoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var SongSchema = Schema({
     number: Number,
-    name: string,
+    name: String,
     duration: String,
     file: String,
     album: {

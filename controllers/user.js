@@ -6,9 +6,9 @@ var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwt');
 
-function pruebas(req, res) {
+function testUser(req, res) {
     res.status(200).send({
-        message: "Probando primer controlador"
+        message: "Probando primer controlador de Users"
     });
 };
 
@@ -23,9 +23,12 @@ function saveUser(req, res) {
     user.image = "null";
 
     if (params.password) {
+
         // Encriptar contraseña
-        bcrypt.hash(params.password, 'null', 'null', function (err, hash) {
+        bcrypt.hash(params.password, null, null, function (err, hash) {
             user.password = hash;
+
+            console.log(params.password);
 
             if (user.name != null && user.surname != null && user.email != null) {
                 user.save((err, userStored) => {
@@ -42,21 +45,22 @@ function saveUser(req, res) {
                             res.status(200).send({
                                 user: userStored
                             });
-                        }
-                    }
+                        };
+                    };
                 });
             } else {
                 res.status(200).send({
                     message: "Rellena todos los campos"
                 });
-            }
+            };
+
         });
 
     } else {
         res.status(200).send({
             message: "Introduce la contraseña"
         });
-    }
+    };
 
 };
 
@@ -94,15 +98,15 @@ function loginUser(req, res) {
                             res.status(200).send({
                                 user
                             });
-                        }
+                        };
                     } else {
                         res.status(404).send({
                             message: "El usuario no ha podido logear"
                         });
-                    }
+                    };
                 });
-            }
-        }
+            };
+        };
     });
 }
 
@@ -125,11 +129,11 @@ function updateUser(req, res) {
                 res.status(200).send({
                     user: userUpdated
                 });
-            }
-        }
+            };
+        };
     });
 
-}
+};
 
 function uploadImage(req, res) {
     var userId = req.params.id;
@@ -157,20 +161,20 @@ function uploadImage(req, res) {
                     res.status(200).send({
                         user: userUpdated
                     });
-                }
+                };
             });
         } else {
             res.status(200).send({
                 message: "El archivo no es una imagen o tiene un formato no valido."
             });
-        }
+        };
 
     } else {
         res.status(200).send({
             message: "Imagen no subida."
         });
-    }
-}
+    };
+};
 
 function getImageFile(req, res) {
     var imageFile = req.params.imageFile;
@@ -182,12 +186,12 @@ function getImageFile(req, res) {
             res.status(200).send({
                 message: "No existe la imagen."
             });
-        }
+        };
     });
-}
+};
 
 module.exports = {
-    pruebas,
+    testUser,
     saveUser,
     loginUser,
     updateUser,

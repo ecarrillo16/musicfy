@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var mongoosePagination = require('mongoose-pagination');
+
 var Artist = require('../models/artist');
 var Album = require('../models/album');
 var Song = require('../models/song');
@@ -58,14 +59,8 @@ function getArtist(req, res) {
     });
 }
 
-function getArtists(req, res) {
-    var page = req.params.page || 1;
-    // if (req.params.page) {
-    //     page = req.params.page;
-    // } else {
-    //     page = 1;
-    // }
-
+function listArtists(req, res) {
+    var page = req.params.page || 1; // This line if same to if else
     var itemsPerPage = 3;
 
     Artist.find().sort('name').paginate(page, itemsPerPage, function (err, artists, total) {
@@ -226,7 +221,7 @@ module.exports = {
     testArtist,
     saveArtist,
     getArtist,
-    getArtists,
+    listArtists,
     updateArtist,
     deleteArtist,
     uploadImage,

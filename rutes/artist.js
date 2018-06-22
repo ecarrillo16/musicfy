@@ -8,7 +8,7 @@ var ArtistController = require('../controllers/artist');
 var api = express.Router();
 var md_auth = require('../midlewares/authenticated');
 var md_upload = multipart({
-	uploadDir: "./assets/uploads/users"
+	uploadDir: "./assets/uploads/artists"
 });
 
 api.get('/testArtist', md_auth.ensureAuth, ArtistController.testArtist);

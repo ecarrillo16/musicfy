@@ -160,6 +160,7 @@ function uploadImage(req, res) {
                 } else {
                     console.log(req.files);
                     res.status(200).send({
+                        image: file_name,
                         user: userUpdated
                     });
                 };

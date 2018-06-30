@@ -71,8 +71,6 @@ function loginUser(req, res) {
     var email = params.email;
     var password = params.password;
 
-
-
     User.findOne({
         email: email.toLowerCase()
     }, (err, user) => {
@@ -90,7 +88,7 @@ function loginUser(req, res) {
                 bcrypt.compare(password, user.password, function (err, check) {
                     if (check) {
                         // Devolver datos de Usuario
-                        if (params.gethash) {
+                        if (params.getHash) {
                             // Devolver token de jwt
                             res.status(200).send({
                                 token: jwt.createToken(user)

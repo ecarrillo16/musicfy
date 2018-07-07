@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
 import { User } from './models/user.models';
 
+import { GLOBAL } from './services/global';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +16,7 @@ export class AppComponent implements OnInit {
   public register: User;
   public identity;
   public token;
+  public url: string;
   public errorMessage;
   // TODO :: Check this 
   public succesMessage;
@@ -25,10 +28,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-
-    console.log('Token :: ', this.token);
-    console.log('Identity :: ', this.identity);
-
+    this.url = GLOBAL.url;
   }
 
   /**
@@ -58,9 +58,7 @@ export class AppComponent implements OnInit {
                 console.log("El token no se ha generado");
               } else {
                 localStorage.setItem('token', token);
-
-                console.log(token);
-                console.log(identity);
+                this.user = new User('', '', '', '', '', 'ROLE_USER', '');
               }
             },
             error => {
@@ -93,7 +91,6 @@ export class AppComponent implements OnInit {
    * onSubmitRegister
    */
   public onSubmitRegister() {
-    console.log(this.register);
 
     this._userService.register(this.register).subscribe(
       response => {
@@ -102,9 +99,10 @@ export class AppComponent implements OnInit {
         this.register = user;
 
         if (!user._id) {
-          this.succesMessage = "Todo bien";
-        } else {
           this.succesMessage = "Todo mal";
+        } else {
+          this.succesMessage = "Todo bien";
+          this.register = new User('', '', '', '', '', 'ROLE_USER', '');
         }
       },
       error => {

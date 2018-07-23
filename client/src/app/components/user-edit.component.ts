@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-
 import { GLOBAL } from '../services/global';
 import { User } from '../models/user.models'
 
@@ -18,7 +17,6 @@ export class UserEditComponent implements OnInit {
 	public alertMessage;
 	public url: string;
 	public fileToUpload: Array<File>;
-
 
 	constructor(
 		private _userService: UserService

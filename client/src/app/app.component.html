@@ -1,45 +1,118 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngIf="identity" class="container">
+<div *ngIf="identity" class="content-fluid-main">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Buscar
-            <span class="sr-only">(current)</span>
+  <!-- NAVBAR START -->
+  <header class="header-inner">
+    <div class="row justify-content-between">
+      <div class="col-2 col-xl-3 d-flex align-items-center">
+        <div class="brand">
+          <a class="brand d-flex" href="#">
+            <div class="brand-icon"></div>
+            <div class="title">{{ title }}</div>
           </a>
+        </div>
+      </div>
+      <div class="col-auto col-xl-6 d-none d-md-flex align-items-center justify-content-center">
+        <nav class="navbar navbar-expand-lg">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">Store</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">Library</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">Local</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="logout()">Logout</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/']">&bull; &bull; &bull;</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="col-auto col-xl-3 d-flex justify-content-end justify-content-lg-end align-items-center">
+        <div class="navbar">
+          <div class="navbar-collapse">
+            <div ngbDropdown class="nav-item dropdown">
+              <a class="nav-link btn" id="dropDownMenu" ngbDropdownToggle>
+                <div class="flex-row d-inline-flex">
+                  <div class="user">
+                    <img class="rounded-circle border border-white" id="imageLoged" src="{{url + 'get-image/' + identity.image}}" alt="">
+                  </div>
+                  <span class="fs-1 ml-2 d-none d-flex justify-content-center align-items-center" id="identityName">
+                    {{identity.name + ' ' + identity.surname}}
+                  </span>
+                </div>
+              </a>
+              <dropdown-menu></dropdown-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- NAVBAR END -->
+
+  <div class="pt-3 pt-lg-4"></div>
+
+  <!-- MENU BAR START -->
+
+  <div class="mt-auto mb-3">
+    <div class="tabs">
+      <ul class="nav d-flex justify-content-between">
+        <li class="menu-item">
+          <a class="nav-link" [routerLink]="['/artists']" [routerLinkActive]="['actived']">
+            <span class="fa fa-music"></span>Artists</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/mis-datos']">User</a>
+        <li class="menu-item">
+          <a class="nav-link" href="">
+            <span class="far fa-newspaper"></span>News</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Artist</a>
+        <li class="menu-item">
+          <a class="nav-link" href="">
+            <span class="fa fa-music"></span>Music</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Album</a>
+        <li class="menu-item">
+          <a class="nav-link" [routerLink]="['/playlist']" [routerLinkActive]="['actived']">
+            <span class="far fa-list-alt"></span>Playlist</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        <li class="menu-item">
+          <a class="nav-link" href="">
+            <span class="fa fa-chart-line"></span>Charts</a>
+        </li>
+        <li class="menu-item">
+          <a class="nav-link" href="">
+            <span class="fa fa-music"></span>Genres</a>
+        </li>
+        <li class="menu-item">
+          <a class="nav-link" href="">
+            <span class="far fa-play-circle"></span>Videos</a>
         </li>
       </ul>
     </div>
-  </nav>
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  </div>
+
+  <!-- MENU BAR END -->
+
+  <!-- PAGE SECTION START -->
   <div class="row">
     <div class="col-md-12">
-      <h2>Are you loged in application Musicfy</h2>
-      <div class="imgEdit">
-        <img id="imageLoged" src="{{url + 'get-image/' + identity.image}}" alt="" style="width: 120px">
-      </div>
-      <div id="identityName">
-        {{identity.name}}
-      </div>
       <router-outlet></router-outlet>
     </div>
   </div>
+  <!-- PAGE SECTION END -->
+
 </div>
+
+
 <div *ngIf="!identity" class="container">
   <div class="row">
     <div class="col-md-6 p-5">

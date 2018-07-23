@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 import { UserService } from './services/user.service';
 import { User } from './models/user.models';
-
 import { GLOBAL } from './services/global';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
   providers: [UserService]
 })
 export class AppComponent implements OnInit {
@@ -21,7 +21,10 @@ export class AppComponent implements OnInit {
   // TODO :: Check this 
   public succesMessage;
 
-  constructor(private _userService: UserService) {
+  constructor(
+    private _userService: UserService,
+    private _router: Router
+  ) {
     this.user = new User('', '', '', '', '', 'ROLE_USER', '');
     this.register = new User('', '', '', '', '', 'ROLE_USER', '');
   }
@@ -125,5 +128,6 @@ export class AppComponent implements OnInit {
     localStorage.clear();
     this.identity = null;
     this.token = null;
+    this._router.navigate(["/"]);
   }
 }

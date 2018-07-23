@@ -3,20 +3,30 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home.component';
 import { UserEditComponent } from "./components/user-edit.component";
+import { ArtistListComponent } from './components/artist-list.component';
+import { ArtistAddComponent } from './components/artist-add.component';
+import { NgbdDropdownMenu } from './components/dropdown-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserEditComponent
+    HomeComponent,
+    UserEditComponent,
+    ArtistListComponent,
+    ArtistAddComponent,
+    NgbdDropdownMenu
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    NgbModule.forRoot()
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

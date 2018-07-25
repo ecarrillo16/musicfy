@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { UserService } from './services/user.service';
-import { User } from './models/user.models';
-import { GLOBAL } from './services/global';
+import {UserService} from './services/user.service';
+import {User} from './models/user.models';
+import {GLOBAL} from './services/global';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   public token;
   public url: string;
   public errorMessage;
-  // TODO :: Check this 
+  // TODO::Check this
   public succesMessage;
 
   constructor(
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     this.user = new User('', '', '', '', '', 'ROLE_USER', '');
     this.register = new User('', '', '', '', '', 'ROLE_USER', '');
   }
+
   ngOnInit() {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -46,9 +47,9 @@ export class AppComponent implements OnInit {
         this.identity = identity;
 
         if (!this.identity._id) {
-          console.log("El usuario no sea ha logeado");
+          console.log('El usuario no sea ha logeado');
         } else {
-          // Crea elemento en local storage para mantener una sesión 
+          // Crea elemento en local storage para mantener una sesión
           localStorage.setItem('identity', JSON.stringify(identity));
 
           // Conseguir token de login
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit {
               this.token = token;
 
               if (this.token.length <= 0) {
-                console.log("El token no se ha generado");
+                console.log('El token no se ha generado');
               } else {
                 localStorage.setItem('token', token);
                 this.user = new User('', '', '', '', '', 'ROLE_USER', '');
@@ -102,9 +103,10 @@ export class AppComponent implements OnInit {
         this.register = user;
 
         if (!user._id) {
-          this.succesMessage = "Todo mal";
+          this.succesMessage = 'Todo mal';
         } else {
-          this.succesMessage = "Todo bien";
+          this.succesMessage = 'Todo bien';
+
           this.register = new User('', '', '', '', '', 'ROLE_USER', '');
         }
       },
@@ -128,6 +130,6 @@ export class AppComponent implements OnInit {
     localStorage.clear();
     this.identity = null;
     this.token = null;
-    this._router.navigate(["/"]);
+    this._router.navigate(['/']);
   }
 }

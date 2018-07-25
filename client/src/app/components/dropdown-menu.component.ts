@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-	selector: 'dropdown-menu',
-	templateUrl: '../views/components/dropdown-menu.html',
-	providers: []
+  selector: 'app-dropdown-menu',
+  templateUrl: '../views/components/dropdown-menu.html',
+  providers: []
 })
 export class NgbdDropdownMenu {
 

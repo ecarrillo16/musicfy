@@ -1,101 +1,100 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { GLOBAL } from './global';
+import {Injectable} from '@angular/core';
+import {Headers, Http} from '@angular/http';
+import {map} from 'rxjs/operators';
+import {GLOBAL} from './global';
 
 @Injectable()
 export class UserService {
 
-    public url: string;
-    public identity;
-    public token;
+  public url: string;
+  public identity;
+  public token;
 
-    constructor(private _http: Http) {
-        this.url = GLOBAL.url;
+  constructor(private _http: Http) {
+    this.url = GLOBAL.url;
+  }
+
+  public signUp(userToLogin, getHash = null) {
+
+    if (getHash != null) {
+      userToLogin.getHash = getHash;
     }
 
-    public signUp(userToLogin, getHash = null) {
+    let json = JSON.stringify(userToLogin);
+    let params = json;
 
-        if (getHash != null) {
-            userToLogin.getHash = getHash;
-        }
+    let headers = new Headers({'Content-Type': 'application/json'});
 
-        let json = JSON.stringify(userToLogin);
-        let params = json;
+    return this._http.post(this.url + 'login', params, {headers: headers})
+      .pipe(
+        map(res => res.json())
+      );
+  }
 
-        let headers = new Headers({ 'Content-Type': 'application/json' });
+  /**
+   * register
+   */
+  public register(userToRegister) {
 
-        return this._http.post(this.url + 'login', params, { headers: headers })
-            .pipe(
-                map(res => res.json())
-            );
+    let json = JSON.stringify(userToRegister);
+    let params = json;
+
+    let headers = new Headers({'Content-Type': 'application/json'});
+
+    return this._http.post(this.url + 'register', params, {headers: headers})
+      .pipe(
+        map(res => res.json())
+      );
+
+  }
+
+  /**
+   * updateUser
+   */
+  public updateUser(userToUpdate) {
+
+    let json = JSON.stringify(userToUpdate);
+    let params = json;
+
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+
+    return this._http.put(this.url + 'update/' + userToUpdate._id, params, {headers: headers})
+      .pipe(
+        map(res => res.json())
+      );
+
+  }
+
+  /**
+   * getIdentity
+   */
+  public getIdentity() {
+    let identity = JSON.parse(localStorage.getItem('identity'));
+
+    if (identity !== 'undefined') {
+      this.identity = identity;
+    } else {
+      this.identity = null;
     }
 
-    /**
-     * register
-     */
-    public register(userToRegister) {
+    return this.identity;
+  }
 
-        let json = JSON.stringify(userToRegister);
-        let params = json;
+  /**
+   * getToken
+   */
+  public getToken() {
+    let token = localStorage.getItem('token');
 
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-
-        return this._http.post(this.url + 'register', params, { headers: headers })
-            .pipe(
-                map(res => res.json())
-            );
-
+    if (token !== 'undefined') {
+      this.token = token;
+    } else {
+      this.token = null;
     }
 
-    /**
-     * updateUser
-     */
-    public updateUser(userToUpdate) {
-
-        let json = JSON.stringify(userToUpdate);
-        let params = json;
-
-        let headers = new Headers({
-            'Content-Type': 'application/json',
-            'Authorization': this.getToken()
-        });
-
-        return this._http.put(this.url + 'update/' + userToUpdate._id, params, { headers: headers })
-            .pipe(
-                map(res => res.json())
-            );
-
-    }
-
-    /**
-     * getIdentity
-     */
-    public getIdentity() {
-        let identity = JSON.parse(localStorage.getItem('identity'));
-
-        if (identity != 'undefined') {
-            this.identity = identity;
-        } else {
-            this.identity = null;
-        }
-
-        return this.identity;
-    }
-
-    /**
-     * getToken
-     */
-    public getToken() {
-        let token = localStorage.getItem('token');
-
-        if (token != 'undefined') {
-            this.token = token;
-        } else {
-            this.token = null;
-        }
-
-        return this.token;
-    }
+    return this.token;
+  }
 }

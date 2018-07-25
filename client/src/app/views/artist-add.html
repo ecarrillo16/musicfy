@@ -10,6 +10,15 @@
       <textarea class="form-control" rows="4" #name="ngModel" name="description" [(ngModel)]="artist.description" required placeholder="Description"></textarea>
     </div>
 
+    <div class="form-group" *ngIf="isEdit">
+      <div class="artistImage" *ngIf="artist.image != 'null'">
+        <img src="{{ url + 'get-image-artist/' + artist.image }}" alt="">
+      </div>
+
+      <label for="">Upload image artist</label>
+      <input type="file" name="" placeholder="Upload image artist" (change)="fileChangeEvent($event)">
+    </div>
+
     <div class="form-group row">
       <div class="col-sm-10">
         <button type="submit" class="btn btn-primary" [disabled]="!formArtist.form.valid">Save</button>

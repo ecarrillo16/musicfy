@@ -4,15 +4,18 @@
   <form name="registre" #updateUserForm="ngForm" (ngSubmit)="onSubmitUpdate()">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" name="name" class="form-control" placeholder="Name" required #name="ngModel" [(ngModel)]="user.name">
+      <input type="text" name="name" class="form-control" placeholder="Name" required #name="ngModel"
+             [(ngModel)]="user.name">
     </div>
     <div class="form-group">
       <label for="surname">Surname</label>
-      <input type="text" class="form-control" name="surname" placeholder="Surname" required #surename="ngModel" [(ngModel)]="user.surname">
+      <input type="text" class="form-control" name="surname" placeholder="Surname" required #surename="ngModel"
+             [(ngModel)]="user.surname">
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" class="form-control" name="email" placeholder="Email" required #email="ngModel" [(ngModel)]="user.email">
+      <input type="text" class="form-control" name="email" placeholder="Email" required #email="ngModel"
+             [(ngModel)]="user.email">
     </div>
     <div class="imgEdit" *ngIf="user.image && user.image != 'null'">
       <img src="{{url + 'get-image/' + user.image}}" alt="" style="width: 120px">

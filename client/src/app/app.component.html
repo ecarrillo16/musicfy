@@ -45,14 +45,15 @@
               <a class="nav-link btn" id="dropDownMenu" ngbDropdownToggle>
                 <div class="flex-row d-inline-flex">
                   <div class="user">
-                    <img class="rounded-circle border border-white" id="imageLoged" src="{{url + 'get-image/' + identity.image}}" alt="">
+                    <img class="rounded-circle border border-white" id="imageLoged"
+                         src="{{url + 'get-image/' + identity.image}}" alt="">
                   </div>
                   <span class="fs-1 ml-2 d-none d-flex justify-content-center align-items-center" id="identityName">
                     {{identity.name + ' ' + identity.surname}}
                   </span>
                 </div>
               </a>
-              <dropdown-menu></dropdown-menu>
+              <app-dropdown-menu></app-dropdown-menu>
             </div>
           </div>
         </div>
@@ -125,15 +126,17 @@
       <form method="POST" name="login" #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="text" name="email" class="form-control" placeholder="Email" aria-describedby="emailHelp" required #email="ngModel"
-            [(ngModel)]="user.email">
+          <input type="text" name="email" class="form-control" placeholder="Email" aria-describedby="emailHelp" required
+                 #email="ngModel"
+                 [(ngModel)]="user.email">
           <small id="emailHelp" class="form-text text-muted">
             <span *ngIf="!email.valid && email.touched">Need an email.</span>
           </small>
         </div>
         <div class="form-group">
           <label for="pssword">Password</label>
-          <input type="password" name="password" class="form-control" placeholder="Password" required #password="ngModel" [(ngModel)]="user.password">
+          <input type="password" name="password" class="form-control" placeholder="Password" required
+                 #password="ngModel" [(ngModel)]="user.password">
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" name="exampleCheck1">
@@ -152,19 +155,23 @@
       <form method="POST" name="registre" #registerForm="ngForm" (ngSubmit)="onSubmitRegister()">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" name="name" class="form-control" placeholder="Name" required #name="ngModel" [(ngModel)]="register.name">
+          <input type="text" name="name" class="form-control" placeholder="Name" required #name="ngModel"
+                 [(ngModel)]="register.name">
         </div>
         <div class="form-group">
           <label for="surname">Surname</label>
-          <input type="text" class="form-control" name="surname" placeholder="Surname" required #surename="ngModel" [(ngModel)]="register.surname">
+          <input type="text" class="form-control" name="surname" placeholder="Surname" required #surename="ngModel"
+                 [(ngModel)]="register.surname">
         </div>
         <div class="form-group">
           <label for="pssword">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" required #password="ngModel" [(ngModel)]="register.password">
+          <input type="password" class="form-control" name="password" placeholder="Password" required
+                 #password="ngModel" [(ngModel)]="register.password">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="text" class="form-control" name="email" placeholder="Email" required #email="ngModel" [(ngModel)]="register.email">
+          <input type="text" class="form-control" name="email" placeholder="Email" required #email="ngModel"
+                 [(ngModel)]="register.email">
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
       </form>

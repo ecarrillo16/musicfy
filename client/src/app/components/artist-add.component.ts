@@ -5,7 +5,6 @@ import { GLOBAL } from '../services/global';
 import { UserService } from '../services/user.service';
 import { ArtistService } from '../services/artist.service';
 import { Artist } from '../models/artist.models';
-import { User } from '../models/user.models';
 
 @Component({
 	selector: 'artist-add',

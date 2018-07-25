@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import 'src/assets/css/main-styles.css';
+@import 'assets/css/main-styles.css';
 @import 'https://use.fontawesome.com/releases/v5.1.0/css/all.css';

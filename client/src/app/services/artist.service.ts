@@ -1,30 +1,76 @@
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { GLOBAL } from './global';
-import { UserService } from './user.service';
-import { Artist } from '../models/artist.models';
+import {Injectable} from '@angular/core';
+import {Headers, Http, RequestOptions} from '@angular/http';
+import {map} from 'rxjs/operators';
+import {GLOBAL} from './global';
+import {Artist} from '../models/artist.models';
 
 @Injectable()
 export class ArtistService {
 
-	public url: string;
-	public identity;
-	public token;
+  public url: string;
+  public identity;
+  public token;
 
-	constructor(private _http: Http) {
-		this.url = GLOBAL.url;
-	}
+  constructor(private _http: Http) {
+    this.url = GLOBAL.url;
+  }
 
-	addArtist(token, artist: Artist) {
-		let params = JSON.stringify(artist);
-		let headers = new Headers({
-			'Content-Type': 'application/json',
-			'Authorization': token
-		});
+  public getArtits(token, page) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
 
-		return this._http.post(this.url + 'saveArtist', params, { headers: headers })
-			.pipe(map(res => res.json()));
-	}
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.get(this.url + 'listArtists/' + page, options)
+      .pipe(map(res => res.json()));
+  }
+
+  public getArtit(token, id: string) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.get(this.url + 'getArtist/' + id, options)
+      .pipe(map(res => res.json()));
+  }
+
+  public addArtist(token, artist: Artist) {
+    let params = JSON.stringify(artist);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
+
+    return this._http.post(this.url + 'saveArtist', params, {headers: headers})
+      .pipe(map(res => res.json()));
+  }
+
+  public editArtist(token, id: string, artist: Artist) {
+    let params = JSON.stringify(artist);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
+
+    return this._http.put(this.url + 'updateArtist' + id, params, {headers: headers})
+      .pipe(map(res => res.json()));
+  }
+
+  public deleteArtit(token, id: string) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': token
+    });
+
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.get(this.url + 'deleteArtist/' + id, options)
+      .pipe(map(res => res.json()));
+  }
+
 }

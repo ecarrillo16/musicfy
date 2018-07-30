@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../services/user.service';
-import {GLOBAL} from '../services/global';
-import {User} from '../models/user.models';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { GLOBAL } from '../../properties/global';
+import { User } from '../user.models';
 
 @Component({
   selector: 'app-user-edit',
-  templateUrl: '../views/user-edit.html',
-  providers: [UserService]
+  templateUrl: './user-edit.html',
+  providers: [ UserService ]
 })
 
 export class UserEditComponent implements OnInit {
@@ -18,7 +18,7 @@ export class UserEditComponent implements OnInit {
   public url: string;
   public fileToUpload: Array<File>;
 
-  constructor(
+  constructor (
     private _userService: UserService
   ) {
     this.title = 'User Edit';
@@ -31,14 +31,14 @@ export class UserEditComponent implements OnInit {
     this.url = GLOBAL.url;
   }
 
-  ngOnInit() {
+  ngOnInit () {
 
   }
 
   /**
    * onSubmit
    */
-  public onSubmitUpdate() {
+  public onSubmitUpdate () {
 
     this._userService.updateUser(this.user).subscribe(
       response => {
@@ -80,7 +80,7 @@ export class UserEditComponent implements OnInit {
   /**
    * fileChangeEvent
    */
-  public fileChangeEvent(fileInput: any) {
+  public fileChangeEvent (fileInput: any) {
     this.fileToUpload = <Array<File>>fileInput.target.files;
     console.log(this.fileToUpload);
   }
@@ -88,7 +88,7 @@ export class UserEditComponent implements OnInit {
   /**
    * makeFileRequest
    */
-  public makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+  public makeFileRequest (url: string, params: Array<string>, files: Array<File>) {
     var token = this.token;
 
     return new Promise((resolve, reject) => {
@@ -96,7 +96,7 @@ export class UserEditComponent implements OnInit {
       var xhr = new XMLHttpRequest();
 
       for (let i = 0; i < files.length; i++) {
-        formData.append('image', files[i], files[i].name);
+        formData.append('image', files[ i ], files[ i ].name);
       }
 
       xhr.onreadystatechange = () => {

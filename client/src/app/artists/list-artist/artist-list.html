@@ -1,0 +1,13 @@
+<div class="head-page">
+  <h1>{{ title }}</h1>
+  <a [routerLink]="['/artist-add']" *ngIf="identity.role == 'ROLE_ADMIN'" class="btn btn-default">Add Artist</a>
+</div>
+
+
+<div class="row" *ngIf="identity">
+
+  <ul class="artists-item">
+    <li class="col-lg-3 artist-item" *ngFor="let artist of artists">{{ artist.name }}</li>
+  </ul>
+
+</div>

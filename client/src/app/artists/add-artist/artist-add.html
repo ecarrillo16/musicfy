@@ -3,20 +3,22 @@
   <form #formArtist="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="artist.name" required placeholder="Name">
+      <input type="text" class="form-control" #name="ngModel" name="name" [(ngModel)]="artist.name" required
+             placeholder="Name">
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea class="form-control" rows="4" #name="ngModel" name="description" [(ngModel)]="artist.description" required placeholder="Description"></textarea>
+      <textarea class="form-control" rows="4" #name="ngModel" name="description" [(ngModel)]="artist.description"
+                required placeholder="Description"></textarea>
     </div>
 
     <div class="form-group" *ngIf="isEdit">
-      <div class="artistImage" *ngIf="artist.image != 'null'">
+      <div class="artistImage" *ngIf="artist.image && artist.image != 'null'">
         <img src="{{ url + 'get-image-artist/' + artist.image }}" alt="">
       </div>
 
-      <label for="">Upload image artist</label>
-      <input type="file" name="" placeholder="Upload image artist" (change)="fileChangeEvent($event)">
+      <label for="uploadImage">Upload image artist</label>
+      <input type="file" name="uploadImage" placeholder="Upload image artist " (change)="fileChangeEvent($event)">
     </div>
 
     <div class="form-group row">

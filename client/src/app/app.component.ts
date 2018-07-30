@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import {UserService} from './services/user.service';
-import {User} from './models/user.models';
-import {GLOBAL} from './services/global';
+import { UserService } from './users/user.service';
+import { User } from './users/user.models';
+import { GLOBAL } from './properties/global';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers: [UserService]
+  providers: [ UserService ]
 })
 export class AppComponent implements OnInit {
   public title = 'Musicfy';
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   // TODO::Check this
   public succesMessage;
 
-  constructor(
+  constructor (
     private _userService: UserService,
     private _router: Router
   ) {
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     this.register = new User('', '', '', '', '', 'ROLE_USER', '');
   }
 
-  ngOnInit() {
+  ngOnInit () {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
   /**
    * onSubmit
    */
-  public onSubmit() {
+  public onSubmit () {
 
     // Conseguir datos de usuario logeado
     this._userService.signUp(this.user).subscribe(
@@ -94,7 +94,7 @@ export class AppComponent implements OnInit {
   /**
    * onSubmitRegister
    */
-  public onSubmitRegister() {
+  public onSubmitRegister () {
 
     this._userService.register(this.register).subscribe(
       response => {
@@ -126,10 +126,10 @@ export class AppComponent implements OnInit {
   /**
    * logout
    */
-  public logout() {
+  public logout () {
     localStorage.clear();
     this.identity = null;
     this.token = null;
-    this._router.navigate(['/']);
+    this._router.navigate([ '/' ]);
   }
 }

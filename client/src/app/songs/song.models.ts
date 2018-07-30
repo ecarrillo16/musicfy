@@ -1,5 +1,5 @@
 export class Song {
-  constructor(
+  constructor (
     public number: number,
     public name: string,
     public duration: string,

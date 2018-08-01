@@ -7,11 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UserEditComponent } from './users/users-edit/user-edit.component';
-import { ArtistListComponent } from './artists/list-artist/artist-list.component';
-import { ArtistAddComponent } from './artists/add-artist/artist-add.component';
-import { ArtistEditComponent } from './artists/edit-artist/artist-edit.component';
-import { NgbdDropdownMenu } from './shared/dropdown-menu/dropdown-menu.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { ArtistListComponent } from './artists/artist-list/artist-list.component';
+import { ArtistAddComponent } from './artists/artist-add/artist-add.component';
+import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component';
+import { NgbdDropdownMenu } from './addons/dropdown-menu/dropdown-menu.component';
+import { UserAddComponent } from './users/user-add/user-add.component';
+import { SongsComponent } from './songs/songs.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NgbdDropdownMenu } from './shared/dropdown-menu/dropdown-menu.component
     ArtistListComponent,
     ArtistAddComponent,
     ArtistEditComponent,
-    NgbdDropdownMenu
+    NgbdDropdownMenu,
+    UserAddComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,

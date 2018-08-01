@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Artist } from '../artist.models';
+import { Artist } from '../properties/artist.models';
 import { GLOBAL } from '../../properties/global';
 import { UserService } from '../../users/user.service';
-import { ArtistService } from '../artist.service';
+import { ArtistService } from '../properties/artist.service';
 
 @Component({
   selector: 'app-artist-add',
-  templateUrl: './artist-add.html',
+  templateUrl: './artist-add.component.html',
   providers: [
     UserService,
     ArtistService

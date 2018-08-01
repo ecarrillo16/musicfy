@@ -3,6 +3,10 @@
 var fs = require('fs');
 var path = require('path');
 var mongoosePagination = require('mongoose-pagination');
+var log4js = require('log4js');
+
+var logger = log4js.getLogger();
+logger.level = 'debug';
 
 var Artist = require('../models/artist');
 var Album = require('../models/album');
@@ -60,6 +64,8 @@ function getArtist(req, res) {
 }
 
 function listArtists(req, res) {
+    logger.debug("Inicio consulta artistas");
+
     var page = req.params.page || 1; // This line if same to if else
     var itemsPerPage = 3;
 

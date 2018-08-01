@@ -4,10 +4,6 @@
 </div>
 
 
-<div class="row" *ngIf="identity">
-
-  <ul class="artists-item">
-    <li class="col-lg-3 artist-item" *ngFor="let artist of artists">{{ artist.name }}</li>
-  </ul>
-
+<div class="row artists-item" *ngIf="identity">
+  <div class="col-md-2 artist-item" *ngFor="let artist of artists">{{ artist.name }}</div>
 </div>

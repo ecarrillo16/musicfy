@@ -5,7 +5,7 @@ import { User } from '../user.models';
 
 @Component({
   selector: 'app-user-edit',
-  templateUrl: './user-edit.html',
+  templateUrl: './user-edit.component.html',
   providers: [ UserService ]
 })
 

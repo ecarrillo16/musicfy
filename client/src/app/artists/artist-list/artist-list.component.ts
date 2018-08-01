@@ -3,12 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { GLOBAL } from '../../properties/global';
 import { UserService } from '../../users/user.service';
-import { ArtistService } from '../artist.service';
-import { Artist } from '../artist.models';
+import { ArtistService } from '../properties/artist.service';
+import { Artist } from '../properties/artist.models';
 
 @Component({
   selector: 'app-artist-list',
-  templateUrl: './artist-list.html',
+  templateUrl: './artist-list.component.html',
   providers: [ UserService, ArtistService ]
 })
 

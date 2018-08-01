@@ -3,13 +3,13 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { GLOBAL } from '../../properties/global';
 import { UserService } from '../../users/user.service';
-import { ArtistService } from '../artist.service';
+import { ArtistService } from '../properties/artist.service';
 import { UploadService } from '../../properties/upload.service';
-import { Artist } from '../artist.models';
+import { Artist } from '../properties/artist.models';
 
 @Component({
   selector: 'app-artist-edit',
-  templateUrl: '../add-artist/artist-add.html',
+  templateUrl: '../artist-add/artist-add.component.html',
   providers: [
     UserService,
     ArtistService,

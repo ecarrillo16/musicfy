@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { GLOBAL } from '../../properties/global';
-import { UserService } from '../../users/user.service';
-import { ArtistService } from '../properties/artist.service';
-import { Artist } from '../properties/artist.models';
+import { GLOBAL } from '../../common/global';
+import { UserService } from '../../users/common/user.service';
+import { ArtistService } from '../common/artist.service';
+import { Artist } from '../common/artist.models';
 
 @Component({
   selector: 'app-artist-list',

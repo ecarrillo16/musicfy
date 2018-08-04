@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { map } from 'rxjs/operators';
-import { GLOBAL } from './global';
+import { GLOBAL } from '../global';
 
 @Injectable()
 export class UploadService {

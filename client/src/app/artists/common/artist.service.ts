@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { map } from 'rxjs/operators';
-import { GLOBAL } from '../../properties/global';
+import { GLOBAL } from '../../common/global';
 import { Artist } from './artist.models';
 
 @Injectable()

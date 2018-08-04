@@ -5,5 +5,9 @@
 
 
 <div class="row artists-item" *ngIf="identity">
-  <div class="col-md-2 artist-item" *ngFor="let artist of artists">{{ artist.name }}</div>
+  
+  <div class="col-md-2 artist-item" *ngFor="let artist of artists">
+    <img src="{{ url + 'get-image-artist/' + artist._id }}" alt="">
+    {{ artist.name }}
+  </div>
 </div>

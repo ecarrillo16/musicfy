@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { map } from 'rxjs/operators';
-import { GLOBAL } from '../properties/global';
+import { GLOBAL } from '../../common/global';
 
 @Injectable()
 export class UserService {

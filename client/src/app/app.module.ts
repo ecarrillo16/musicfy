@@ -8,12 +8,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
-import { ArtistListComponent } from './artists/artist-list/artist-list.component';
-import { ArtistAddComponent } from './artists/artist-add/artist-add.component';
-import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component';
-import { NgbdDropdownMenu } from './addons/dropdown-menu/dropdown-menu.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
+import { ArtistAddComponent, ArtistDetailComponent, ArtistEditComponent, ArtistListComponent } from './artists/index';
+import { NgbdDropdownMenu } from './addons/dropdown-menu/dropdown-menu.component';
 import { SongsComponent } from './songs/songs.component';
+import { AlbumAddComponent } from './albums/album-add/album-add.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +25,9 @@ import { SongsComponent } from './songs/songs.component';
     ArtistEditComponent,
     NgbdDropdownMenu,
     UserAddComponent,
-    SongsComponent
+    SongsComponent,
+    AlbumAddComponent,
+    ArtistDetailComponent
   ],
   imports: [
     BrowserModule,

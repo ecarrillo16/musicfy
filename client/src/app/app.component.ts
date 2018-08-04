@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserService } from './users/user.service';
-import { User } from './users/user.models';
-import { GLOBAL } from './properties/global';
+import { UserService } from './users/common/user.service';
+import { User } from './users/common/user.models';
+import { GLOBAL } from './common/global';
 
 @Component({
   selector: 'app-root',

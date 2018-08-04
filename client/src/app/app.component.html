@@ -134,13 +134,13 @@
           </small>
         </div>
         <div class="form-group">
-          <label for="pssword">Password</label>
-          <input type="password" name="password" class="form-control" placeholder="Password" required
+          <label for="login-password">Password</label>
+          <input type="password" class="form-control" id="login-password" name="password" placeholder="Password" required
                  #password="ngModel" [(ngModel)]="user.password">
         </div>
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" name="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <input type="checkbox" class="form-check-input" id="check" name="exampleCheck1">
+          <label class="form-check-label" for="check">Check me out</label>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
@@ -155,22 +155,22 @@
       <form method="POST" name="registre" #registerForm="ngForm" (ngSubmit)="onSubmitRegister()">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" name="name" class="form-control" placeholder="Name" required #name="ngModel"
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name" required #name="ngModel"
                  [(ngModel)]="register.name">
         </div>
         <div class="form-group">
           <label for="surname">Surname</label>
-          <input type="text" class="form-control" name="surname" placeholder="Surname" required #surename="ngModel"
+          <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname" required #surename="ngModel"
                  [(ngModel)]="register.surname">
         </div>
         <div class="form-group">
-          <label for="pssword">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" required
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required
                  #password="ngModel" [(ngModel)]="register.password">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="text" class="form-control" name="email" placeholder="Email" required #email="ngModel"
+          <input type="text" class="form-control" id="email" name="email" placeholder="Email" required #email="ngModel"
                  [(ngModel)]="register.email">
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
